@@ -1,0 +1,36 @@
+Name:       helloworld
+Version:    {{ version }}
+Release:    1%{?dist}
+Summary:    Hello World
+License:    GPL-3.0-or-later
+URL:        https://hellowor.ld
+Source0:    {{ source_folder_name }}.tar.gz
+
+BuildRequires: {{ build_dependencies | join: ' ' }}
+
+%define debug_package %{nil}
+%define _build_id_links none
+
+%description
+Hello World
+
+
+%prep
+%setup -q
+
+
+%build
+make %{?_smp_mflags}
+
+
+%install
+make install INSTALL_ROOT=%{buildroot}
+
+
+%files
+%{_bindir}/helloworld
+
+
+%changelog
+* Sun Feb 18 2024 Chuck Norris <chuck@norr.is>
+- Chuck Norris does not use revision control software. None of his code has ever needed revision.

@@ -1,0 +1,109 @@
+extract_version:
+  provider: 'file'
+  file:
+    file: 'Cargo.toml'
+    regex: 'version = "(.+)"'
+
+rpm: &rpm
+  installable_package_name: 'hellorust'
+  rpm:
+    spec_template: '.omnipackage/hellorust.spec.liquid'
+
+deb: &deb
+  installable_package_name: 'hellorust'
+  deb:
+    debian_templates: '.omnipackage/deb'
+
+builds:
+- distro: 'opensuse_15.3'
+  build_dependencies: ['rust', 'cargo', 'make']
+  <<: *rpm
+
+- distro: 'opensuse_15.4'
+  build_dependencies: ['rust', 'cargo', 'make']
+  <<: *rpm
+
+- distro: 'opensuse_15.5'
+  build_dependencies: ['rust', 'cargo', 'make']
+  <<: *rpm
+
+- distro: 'opensuse_tumbleweed'
+  build_dependencies: ['rust', 'cargo', 'make']
+  <<: *rpm
+
+- distro: 'fedora_38'
+  build_dependencies: ['rust', 'cargo', 'make']
+  <<: *rpm
+
+- distro: 'fedora_39'
+  build_dependencies: ['rust', 'cargo', 'make']
+  <<: *rpm
+
+- distro: 'fedora_rawhide'
+  build_dependencies: ['rust', 'cargo', 'make']
+  <<: *rpm
+
+- distro: 'debian_10'
+  build_dependencies: ['curl', 'build-essential']
+  before_build_script: '.omnipackage/install_rust.sh'
+  <<: *deb
+
+- distro: 'debian_11'
+  build_dependencies: ['curl', 'build-essential']
+  before_build_script: '.omnipackage/install_rust.sh'
+  <<: *deb
+
+- distro: 'debian_12'
+  build_dependencies: ['curl', 'build-essential']
+  before_build_script: '.omnipackage/install_rust.sh'
+  <<: *deb
+
+- distro: 'debian_testing'
+  build_dependencies: ['curl', 'build-essential']
+  before_build_script: '.omnipackage/install_rust.sh'
+  <<: *deb
+
+- distro: 'debian_unstable'
+  build_dependencies: ['curl', 'build-essential']
+  before_build_script: '.omnipackage/install_rust.sh'
+  <<: *deb
+
+- distro: 'ubuntu_20.04'
+  build_dependencies: ['curl', 'build-essential']
+  before_build_script: '.omnipackage/install_rust.sh'
+  <<: *deb
+
+- distro: 'ubuntu_22.04'
+  build_dependencies: ['curl', 'build-essential']
+  before_build_script: '.omnipackage/install_rust.sh'
+  <<: *deb
+
+- distro: 'ubuntu_23.10'
+  build_dependencies: ['curl', 'build-essential']
+  before_build_script: '.omnipackage/install_rust.sh'
+  <<: *deb
+
+- distro: 'ubuntu_23.04'
+  build_dependencies: ['curl', 'build-essential']
+  before_build_script: '.omnipackage/install_rust.sh'
+  <<: *deb
+
+- distro: 'almalinux_8'
+  build_dependencies: ['curl', 'gcc', 'make']
+  before_build_script: '.omnipackage/install_rust.sh'
+  <<: *rpm
+
+- distro: 'almalinux_9'
+  build_dependencies: ['curl', 'gcc', 'make']
+  before_build_script: '.omnipackage/install_rust.sh'
+  <<: *rpm
+
+- distro: 'rockylinux_8'
+  build_dependencies: ['curl', 'gcc', 'make']
+  before_build_script: '.omnipackage/install_rust.sh'
+  <<: *rpm
+
+- distro: 'rockylinux_9'
+  build_dependencies: ['curl', 'gcc', 'make']
+  before_build_script: '.omnipackage/install_rust.sh'
+  <<: *rpm
