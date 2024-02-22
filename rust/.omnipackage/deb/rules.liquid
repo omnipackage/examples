@@ -3,11 +3,15 @@
 # Be carefull, this is a Makefile, so the indents are tabs and not spaces!
 # -*- makefile -*-
 
-export DESTROOT=$(CURDIR)/debian/helloworld
+export DESTROOT=$(CURDIR)/debian/hellorust
 export DH_VERBOSE=1
 
 %:
 	dh $@ --parallel
 
+override_dh_auto_build:
+	cargo build --release
+
 override_dh_auto_install:
-	make install INSTALL_ROOT=$(DESTROOT)
+	mkdir -p $(DESTROOT)/usr/bin/
+	cp -p target/release/rust $(DESTROOT)/usr/bin/hellorust

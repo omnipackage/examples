@@ -20,11 +20,12 @@ Hello World in Rust
 
 
 %build
-make %{?_smp_mflags}
+cargo build --release
 
 
 %install
-make install INSTALL_ROOT=%{buildroot}
+mkdir -p %{buildroot}/usr/bin/
+cp -p target/release/rust %{buildroot}/usr/bin/hellorust
 
 
 %files
