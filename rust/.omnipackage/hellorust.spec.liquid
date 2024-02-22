@@ -24,12 +24,12 @@ cargo build --release
 
 
 %install
-mkdir -p %{buildroot}/usr/bin/
-cp -p target/release/rust %{buildroot}/usr/bin/hellorust
+install -d -m755 %{buildroot}/usr/bin/
+install -m755 target/release/rust %{buildroot}/usr/bin/hellorust
 
 
 %files
-%{_bindir}/hellorust
+/usr/bin/hellorust
 
 
 %changelog
