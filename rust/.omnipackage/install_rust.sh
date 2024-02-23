@@ -7,4 +7,4 @@ if cargo --version; then
 fi
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-ln $HOME/.cargo/bin/* /usr/bin/
+ln -s $HOME/.cargo/bin/* /usr/bin/

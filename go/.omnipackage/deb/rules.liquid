@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+# debian.rules
+# Be carefull, this is a Makefile, so the indents are tabs and not spaces!
+# -*- makefile -*-
+
+export DESTROOT=$(CURDIR)/debian/hellogo
+export DH_VERBOSE=1
+
+%:
+	dh $@ --parallel
+
+override_dh_auto_build:
+	go mod tidy
+	go build -v -o hellogo
+
+override_dh_auto_install:
+	install -d -m755 $(DESTROOT)/usr/bin/
+	install -m755 hellogo $(DESTROOT)/usr/bin/hellogo

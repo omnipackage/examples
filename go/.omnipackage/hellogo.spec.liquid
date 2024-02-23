@@ -1,0 +1,38 @@
+Name:       hellogo
+Version:    {{ version }}
+Release:    1%{?dist}
+Summary:    Hello World in Go
+License:    GPL-3.0-or-later
+URL:        https://hellowor.ld
+Source0:    {{ source_folder_name }}.tar.gz
+
+BuildRequires: {{ build_dependencies | join: ' ' }}
+
+%define debug_package %{nil}
+%define _build_id_links none
+
+%description
+Hello World in Go
+
+
+%prep
+%setup -q
+
+
+%build
+go mod tidy
+go build -v -o hellogo
+
+
+%install
+install -d -m755 %{buildroot}/usr/bin/
+install -m755 hellogo %{buildroot}/usr/bin/hellogo
+
+
+%files
+/usr/bin/hellogo
+
+
+%changelog
+* Sun Feb 18 2024 Chuck Norris <chuck@norr.is>
+- Chuck Norris does not use revision control software. None of his code has ever needed revision.
