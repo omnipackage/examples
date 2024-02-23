@@ -1,9 +1,9 @@
-Name:       hellogo
+Name:       omnipackage_example_c
 Version:    {{ version }}
 Release:    1%{?dist}
-Summary:    Hello World in Go
+Summary:    Example RPM C project with OmniPackage
 License:    GPL-3.0-or-later
-URL:        https://hellowor.ld
+URL:        https://omnipackage.org/
 Source0:    {{ source_folder_name }}.tar.gz
 
 BuildRequires: {{ build_dependencies | join: ' ' }}
@@ -12,7 +12,7 @@ BuildRequires: {{ build_dependencies | join: ' ' }}
 %define _build_id_links none
 
 %description
-Hello World in Go
+Example RPM C project with OmniPackage
 
 
 %prep
@@ -20,17 +20,15 @@ Hello World in Go
 
 
 %build
-go mod tidy
-go build -v -o hellogo
+make %{?_smp_mflags}
 
 
 %install
-install -d -m755 %{buildroot}/usr/bin/
-install -m755 hellogo %{buildroot}/usr/bin/hellogo
+make install INSTALL_ROOT=%{buildroot}
 
 
 %files
-/usr/bin/hellogo
+/usr/bin/omnipackage_example_c
 
 
 %changelog

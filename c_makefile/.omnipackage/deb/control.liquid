@@ -1,12 +1,12 @@
-Source: omnipackage-example-rust
+Source: omnipackage-example-c
 Section: sound
 Priority: optional
 Maintainer: Chuck Norris <chuck@norr.is>
 Build-Depends: debhelper (>= 8.0.0), {{ build_dependencies | join: ', ' }}
 Standards-Version: 3.9.4
-Homepage: http://omnipackage.org
+Homepage: https://omnipackage.org
 
-Package: omnipackage-example-rust
+Package: omnipackage-example-c
 Architecture: amd64
 Depends: ${shlibs:Depends}, ${misc:Depends}, {{ runtime_dependencies | join: ', ' }}
-Description: Example DEB Rust project with OmniPackage
+Description: Example DEB C project with OmniPackage

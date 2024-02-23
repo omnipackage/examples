@@ -3,7 +3,7 @@
 # Be carefull, this is a Makefile, so the indents are tabs and not spaces!
 # -*- makefile -*-
 
-export DESTROOT=$(CURDIR)/debian/hellorust
+export DESTROOT=$(CURDIR)/debian/omnipackage-example-rust
 export DH_VERBOSE=1
 
 %:
@@ -14,4 +14,4 @@ override_dh_auto_build:
 
 override_dh_auto_install:
 	install -d -m755 $(DESTROOT)/usr/bin/
-	install -m755 target/release/rust $(DESTROOT)/usr/bin/hellorust
+	install -m755 target/release/rust $(DESTROOT)/usr/bin/omnipackage_example_rust

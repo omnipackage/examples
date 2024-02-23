@@ -1,6 +1,6 @@
 INSTALL_ROOT := install_root
 CC := gcc
-BINARY := helloworld
+BINARY := omnipackage_example_c
 
 all:
 	$(CC) -o $(BINARY) *.c

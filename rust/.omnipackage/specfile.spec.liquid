@@ -1,7 +1,7 @@
-Name:       helloworld
+Name:       omnipackage_example_rust
 Version:    {{ version }}
 Release:    1%{?dist}
-Summary:    Hello World
+Summary:    Example RPM Rust project with OmniPackage
 License:    GPL-3.0-or-later
 URL:        https://hellowor.ld
 Source0:    {{ source_folder_name }}.tar.gz
@@ -12,7 +12,7 @@ BuildRequires: {{ build_dependencies | join: ' ' }}
 %define _build_id_links none
 
 %description
-Hello World
+Example RPM Rust project with OmniPackage
 
 
 %prep
@@ -20,15 +20,16 @@ Hello World
 
 
 %build
-make %{?_smp_mflags}
+cargo build --release
 
 
 %install
-make install INSTALL_ROOT=%{buildroot}
+install -d -m755 %{buildroot}/usr/bin/
+install -m755 target/release/rust %{buildroot}/usr/bin/omnipackage_example_rust
 
 
 %files
-/usr/bin/helloworld
+/usr/bin/omnipackage_example_rust
 
 
 %changelog

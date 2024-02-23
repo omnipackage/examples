@@ -3,7 +3,7 @@
 # Be carefull, this is a Makefile, so the indents are tabs and not spaces!
 # -*- makefile -*-
 
-export DESTROOT=$(CURDIR)/debian/hellogo
+export DESTROOT=$(CURDIR)/debian/omnipackage-example-go
 export DH_VERBOSE=1
 
 %:
@@ -11,8 +11,8 @@ export DH_VERBOSE=1
 
 override_dh_auto_build:
 	go mod tidy
-	go build -v -o hellogo
+	go build -v -o omnipackage_example_go
 
 override_dh_auto_install:
 	install -d -m755 $(DESTROOT)/usr/bin/
-	install -m755 hellogo $(DESTROOT)/usr/bin/hellogo
+	install -m755 omnipackage_example_go $(DESTROOT)/usr/bin/
