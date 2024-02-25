@@ -1,0 +1,35 @@
+Name:       omnipackage_example_electron
+Version:    {{ version }}
+Release:    1%{?dist}
+Summary:    Example RPM Electron project with OmniPackage
+License:    GPL-3.0-or-later
+URL:        https://omnipackage.org/
+Source0:    {{ source_folder_name }}.tar.gz
+
+BuildRequires: {{ build_dependencies | join: ' ' }}
+
+%define debug_package %{nil}
+%define _build_id_links none
+
+%description
+Example RPM Electron project with OmniPackage
+
+
+%prep
+%setup -q
+
+
+%build
+
+
+%install
+./install.sh %{buildroot}
+
+
+%files
+/usr/bin/omnipackage_example_electron
+/usr/lib/omnipackage_example_electron/
+
+%changelog
+* Sun Feb 18 2024 Chuck Norris <chuck@norr.is>
+- Chuck Norris does not use revision control software. None of his code has ever needed revision.

@@ -1,0 +1,78 @@
+extract_version:
+  provider: 'file'
+  file:
+    file: 'package.json'
+    regex: '"version": "(.+)"'
+
+rpm: &rpm
+  installable_package_name: 'omnipackage_example_electron'
+  build_dependencies: ['wget', 'unzip']
+  rpm:
+    spec_template: '.omnipackage/specfile.spec.liquid'
+
+deb: &deb
+  installable_package_name: 'omnipackage-example-electron'
+  build_dependencies: ['wget', 'unzip', 'xdg-utils', 'libxtst6', 'libnss3', 'libnotify4', 'gconf2', 'gconf-service', 'libgtk2.0-0', 'libatk-bridge2.0-0', 'libgtk-3-0', 'libxkbcommon-x11-0', 'libasound2', 'libatspi2.0-0', 'libgbm1']
+  deb:
+    debian_templates: '.omnipackage/deb'
+
+builds:
+- distro: 'opensuse_15.3'
+  <<: *rpm
+
+- distro: 'opensuse_15.4'
+  <<: *rpm
+
+- distro: 'opensuse_15.5'
+  <<: *rpm
+
+- distro: 'opensuse_tumbleweed'
+  <<: *rpm
+
+- distro: 'fedora_38'
+  <<: *rpm
+
+- distro: 'fedora_39'
+  <<: *rpm
+
+- distro: 'fedora_rawhide'
+  <<: *rpm
+
+- distro: 'debian_10'
+  <<: *deb
+
+- distro: 'debian_11'
+  <<: *deb
+
+- distro: 'debian_12'
+  <<: *deb
+
+- distro: 'debian_testing'
+  <<: *deb
+
+- distro: 'debian_unstable'
+  <<: *deb
+
+- distro: 'ubuntu_20.04'
+  <<: *deb
+
+- distro: 'ubuntu_22.04'
+  <<: *deb
+
+- distro: 'ubuntu_23.10'
+  <<: *deb
+
+- distro: 'ubuntu_23.04'
+  <<: *deb
+
+- distro: 'almalinux_8'
+  <<: *rpm
+
+- distro: 'almalinux_9'
+  <<: *rpm
+
+- distro: 'rockylinux_8'
+  <<: *rpm
+
+- distro: 'rockylinux_9'
+  <<: *rpm
