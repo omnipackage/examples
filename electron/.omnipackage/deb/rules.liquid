@@ -10,4 +10,4 @@ export DESTROOT=$(CURDIR)/debian/omnipackage-example-electron
 	dh $@ --parallel
 
 override_dh_auto_install:
-	./install.sh $(DESTROOT)
+	$(CURDIR)/.omnipackage/install.sh $(DESTROOT)
