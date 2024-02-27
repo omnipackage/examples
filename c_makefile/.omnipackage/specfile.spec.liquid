@@ -7,6 +7,9 @@ URL:        https://omnipackage.org/
 Source0:    {{ source_folder_name }}.tar.gz
 
 BuildRequires: {{ build_dependencies | join: ' ' }}
+{% if runtime_dependencies.size > 0 %}
+Requires: {{ runtime_dependencies | join: ', ' }}
+{% endif %}
 
 %define debug_package %{nil}
 %define _build_id_links none

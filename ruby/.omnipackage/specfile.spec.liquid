@@ -1,7 +1,7 @@
-Name:       omnipackage_example_electron
+Name:       omnipackage_example_ruby
 Version:    {{ version }}
 Release:    1%{?dist}
-Summary:    Example RPM Electron project with OmniPackage
+Summary:    Example RPM Ruby project with OmniPackage
 License:    GPL-3.0-or-later
 URL:        https://omnipackage.org/
 Source0:    {{ source_folder_name }}.tar.gz
@@ -15,7 +15,7 @@ Requires: {{ runtime_dependencies | join: ', ' }}
 %define _build_id_links none
 
 %description
-Example RPM Electron project with OmniPackage
+Example RPM Ruby project with OmniPackage
 
 
 %prep
@@ -26,12 +26,13 @@ Example RPM Electron project with OmniPackage
 
 
 %install
+chmod +x .omnipackage/install.sh
 .omnipackage/install.sh %{buildroot}
 
 
 %files
-/usr/bin/omnipackage_example_electron
-/usr/lib/omnipackage_example_electron/
+/usr/bin/omnipackage_example_ruby
+/usr/lib/omnipackage_example_ruby/
 
 %changelog
 * Sun Feb 18 2024 Chuck Norris <chuck@norr.is>
