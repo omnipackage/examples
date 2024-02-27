@@ -1,0 +1,13 @@
+name: omnipackage_example_crystal
+version: 0.1.0
+
+authors:
+  - Oleg Antonyan <oleg.b.antonyan@gmail.com>
+
+targets:
+  omnipackage_example_crystal:
+    main: src/omnipackage_example_crystal.cr
+
+crystal: '>= 1.11.2'
+
+license: MIT
