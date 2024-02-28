@@ -19,17 +19,19 @@ BUNDLE_WITHOUT: "development"
 ' >> .bundle/config
 
 BUNDLER=bundle
+RUBY=ruby
 if [ -d $VENDORED_RUBY_DIR ]; then
   mkdir -p $BUILDROOT$LIBDIR/vendor/
   cp -R $VENDORED_RUBY_DIR $BUILDROOT$LIBDIR/vendor/
   export PATH=$VENDORED_RUBY_DIR/bin/:$PATH
   BUNDLER=vendor/ruby/bin/bundle
+  RUBY=vendor/ruby/bin/ruby
 fi
 
 bin/setup
 
 echo "
 #!/usr/bin/env bash
-cd $LIBDIR && $BUNDLER exec exe/omnipackage_example_ruby
+cd $LIBDIR && $BUNDLER exec $RUBY exe/omnipackage_example_ruby
 " >> $BUILDROOT/usr/bin/omnipackage_example_ruby
 chmod +x $BUILDROOT/usr/bin/omnipackage_example_ruby
