@@ -4,8 +4,7 @@ set -xEeuo pipefail
 
 BUILDROOT=$1
 LIBDIR="/usr/lib/omnipackage_example_ruby"
-
-ruby -v
+VENDORED_RUBY_DIR="/usr/lib/omnipackage_example_ruby/vendor/ruby"
 
 install -d -m755 $BUILDROOT$LIBDIR
 install -d -m755 $BUILDROOT/usr/bin/
@@ -19,13 +18,18 @@ BUNDLE_PATH: "vendor/bundle"
 BUNDLE_WITHOUT: "development"
 ' >> .bundle/config
 
-#gem install -i $BUILDROOT$LIBDIR/gems/ -N -E bundler
-#$BUILDROOT$LIBDIR/gems/bin/bundle install --clean --path $BUILDROOT$LIBDIR/gems/
+BUNDLER=bundle
+if [ -d $VENDORED_RUBY_DIR ]; then
+  mkdir -p $BUILDROOT$LIBDIR/vendor/
+  cp -R $VENDORED_RUBY_DIR $BUILDROOT$LIBDIR/vendor/
+  export PATH=$VENDORED_RUBY_DIR/bin/:$PATH
+  BUNDLER=vendor/ruby/bin/bundle
+fi
+
 bin/setup
 
 echo "
 #!/usr/bin/env bash
-cd $LIBDIR && bundle exec exe/omnipackage_example_ruby
+cd $LIBDIR && $BUNDLER exec exe/omnipackage_example_ruby
 " >> $BUILDROOT/usr/bin/omnipackage_example_ruby
-
 chmod +x $BUILDROOT/usr/bin/omnipackage_example_ruby

@@ -21,12 +21,21 @@ deb: &deb
 builds:
 - distro: 'opensuse_15.3'
   <<: *rpm
+  build_dependencies: ['gcc', 'make', 'libopenssl-devel', 'libyaml-devel', 'zlib-devel', 'libffi-devel', 'gmp-devel']
+  runtime_dependencies: []
+  before_build_script: '.omnipackage/install_ruby.sh'
 
 - distro: 'opensuse_15.4'
   <<: *rpm
+  build_dependencies: ['gcc', 'make', 'libopenssl-devel', 'libyaml-devel', 'zlib-devel', 'libffi-devel', 'gmp-devel']
+  runtime_dependencies: []
+  before_build_script: '.omnipackage/install_ruby.sh'
 
 - distro: 'opensuse_15.5'
   <<: *rpm
+  build_dependencies: ['gcc', 'make', 'libopenssl-devel', 'libyaml-devel', 'zlib-devel', 'libffi-devel', 'gmp-devel']
+  runtime_dependencies: []
+  before_build_script: '.omnipackage/install_ruby.sh'
 
 - distro: 'opensuse_tumbleweed'
   <<: *rpm
@@ -42,6 +51,9 @@ builds:
 
 - distro: 'debian_10'
   <<: *deb
+  build_dependencies: ['gcc', 'make', 'libssl-dev', 'libyaml-dev', 'zlib1g-dev', 'libffi-dev', 'libgmp-dev']
+  runtime_dependencies: []
+  before_build_script: '.omnipackage/install_ruby.sh'
 
 - distro: 'debian_11'
   <<: *deb
@@ -69,12 +81,18 @@ builds:
 
 - distro: 'almalinux_8'
   <<: *rpm
+  build_dependencies: ['gcc', 'make', 'openssl-devel', 'zlib-devel', 'libffi-devel', 'gmp-devel']
+  runtime_dependencies: []
+  before_build_script: '.omnipackage/install_ruby_rh8.sh'
 
 - distro: 'almalinux_9'
   <<: *rpm
 
 - distro: 'rockylinux_8'
   <<: *rpm
+  build_dependencies: ['gcc', 'make', 'openssl-devel', 'zlib-devel', 'libffi-devel', 'gmp-devel']
+  runtime_dependencies: []
+  before_build_script: '.omnipackage/install_ruby_rh8.sh'
 
 - distro: 'rockylinux_9'
   <<: *rpm
