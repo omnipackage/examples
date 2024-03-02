@@ -13,8 +13,8 @@ rpm: &rpm
 
 deb: &deb
   installable_package_name: 'omnipackage-example-python'
-  build_dependencies: ['ruby-dev', 'ruby-bundler']
-  runtime_dependencies: ['ruby', 'ruby-bundler']
+  build_dependencies: ['python3-dev', 'python3-pip']
+  runtime_dependencies: ['python3']
   deb:
     debian_templates: '.omnipackage/deb'
 
@@ -42,9 +42,6 @@ builds:
 
 - distro: 'debian_10'
   <<: *deb
-  build_dependencies: ['gcc', 'make', 'libssl-dev', 'libyaml-dev', 'zlib1g-dev', 'libffi-dev', 'libgmp-dev']
-  runtime_dependencies: []
-  before_build_script: '.omnipackage/install_ruby.sh'
 
 - distro: 'debian_11'
   <<: *deb
@@ -72,18 +69,12 @@ builds:
 
 - distro: 'almalinux_8'
   <<: *rpm
-  build_dependencies: ['gcc', 'make', 'openssl-devel', 'zlib-devel', 'libffi-devel', 'gmp-devel']
-  runtime_dependencies: []
-  before_build_script: '.omnipackage/install_ruby_rh8.sh'
 
 - distro: 'almalinux_9'
   <<: *rpm
 
 - distro: 'rockylinux_8'
   <<: *rpm
-  build_dependencies: ['gcc', 'make', 'openssl-devel', 'zlib-devel', 'libffi-devel', 'gmp-devel']
-  runtime_dependencies: []
-  before_build_script: '.omnipackage/install_ruby_rh8.sh'
 
 - distro: 'rockylinux_9'
   <<: *rpm

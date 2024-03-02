@@ -10,4 +10,5 @@ export DESTROOT=$(CURDIR)/debian/omnipackage-example-python
 	dh $@ --parallel
 
 override_dh_auto_install:
+	chmod +x $(CURDIR)/.omnipackage/install.sh # missing permissions sometimes, no idea why
 	$(CURDIR)/.omnipackage/install.sh $(DESTROOT)
