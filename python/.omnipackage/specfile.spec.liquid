@@ -1,0 +1,39 @@
+Name:       omnipackage_example_python
+Version:    {{ version }}
+Release:    1%{?dist}
+Summary:    Example RPM Python project with OmniPackage
+License:    GPL-3.0-or-later
+URL:        https://omnipackage.org/
+Source0:    {{ source_folder_name }}.tar.gz
+
+BuildRequires: {{ build_dependencies | join: ' ' }}
+{% if runtime_dependencies.size > 0 %}
+Requires: {{ runtime_dependencies | join: ', ' }}
+{% endif %}
+
+%define debug_package %{nil}
+%define _build_id_links none
+
+%description
+Example RPM Python project with OmniPackage
+
+
+%prep
+%setup -q
+
+
+%build
+
+
+%install
+chmod +x .omnipackage/install.sh
+.omnipackage/install.sh %{buildroot}
+
+
+%files
+/usr/bin/omnipackage_example_python
+/usr/lib/omnipackage_example_python/
+
+%changelog
+* Sun Feb 18 2024 Chuck Norris <chuck@norr.is>
+- Chuck Norris does not use revision control software. None of his code has ever needed revision.

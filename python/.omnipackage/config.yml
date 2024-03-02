@@ -1,0 +1,95 @@
+extract_version:
+  provider: 'file'
+  file:
+    file: 'main.py'
+    regex: 'VERSION = "(.+)"'
+
+rpm: &rpm
+  installable_package_name: 'omnipackage_example_python'
+  rpm:
+    spec_template: '.omnipackage/specfile.spec.liquid'
+
+deb: &deb
+  installable_package_name: 'omnipackage-example-python'
+  build_dependencies: ['ruby-dev', 'ruby-bundler']
+  runtime_dependencies: ['ruby', 'ruby-bundler']
+  deb:
+    debian_templates: '.omnipackage/deb'
+
+builds:
+- distro: 'opensuse_15.3'
+  <<: *rpm
+  build_dependencies: ['python3-devel', 'python3-pip']
+  runtime_dependencies: ['python3']
+
+- distro: 'opensuse_15.4'
+  <<: *rpm
+  build_dependencies: ['gcc', 'make', 'libopenssl-devel', 'libyaml-devel', 'zlib-devel', 'libffi-devel', 'gmp-devel']
+  runtime_dependencies: []
+  before_build_script: '.omnipackage/install_ruby.sh'
+
+- distro: 'opensuse_15.5'
+  <<: *rpm
+  build_dependencies: ['gcc', 'make', 'libopenssl-devel', 'libyaml-devel', 'zlib-devel', 'libffi-devel', 'gmp-devel']
+  runtime_dependencies: []
+  before_build_script: '.omnipackage/install_ruby.sh'
+
+- distro: 'opensuse_tumbleweed'
+  <<: *rpm
+
+- distro: 'fedora_38'
+  <<: *rpm
+
+- distro: 'fedora_39'
+  <<: *rpm
+
+- distro: 'fedora_rawhide'
+  <<: *rpm
+
+- distro: 'debian_10'
+  <<: *deb
+  build_dependencies: ['gcc', 'make', 'libssl-dev', 'libyaml-dev', 'zlib1g-dev', 'libffi-dev', 'libgmp-dev']
+  runtime_dependencies: []
+  before_build_script: '.omnipackage/install_ruby.sh'
+
+- distro: 'debian_11'
+  <<: *deb
+
+- distro: 'debian_12'
+  <<: *deb
+
+- distro: 'debian_testing'
+  <<: *deb
+
+- distro: 'debian_unstable'
+  <<: *deb
+
+- distro: 'ubuntu_20.04'
+  <<: *deb
+
+- distro: 'ubuntu_22.04'
+  <<: *deb
+
+- distro: 'ubuntu_23.10'
+  <<: *deb
+
+- distro: 'ubuntu_23.04'
+  <<: *deb
+
+- distro: 'almalinux_8'
+  <<: *rpm
+  build_dependencies: ['gcc', 'make', 'openssl-devel', 'zlib-devel', 'libffi-devel', 'gmp-devel']
+  runtime_dependencies: []
+  before_build_script: '.omnipackage/install_ruby_rh8.sh'
+
+- distro: 'almalinux_9'
+  <<: *rpm
+
+- distro: 'rockylinux_8'
+  <<: *rpm
+  build_dependencies: ['gcc', 'make', 'openssl-devel', 'zlib-devel', 'libffi-devel', 'gmp-devel']
+  runtime_dependencies: []
+  before_build_script: '.omnipackage/install_ruby_rh8.sh'
+
+- distro: 'rockylinux_9'
+  <<: *rpm
