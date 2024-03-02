@@ -33,7 +33,7 @@ install -m755 omnipackage_example_go %{buildroot}/usr/bin/
 
 
 %files
-/usr/bin/omnipackage_example_go
+%attr(755, root, root) /usr/bin/omnipackage_example_go
 
 
 %changelog

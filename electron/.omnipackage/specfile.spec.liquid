@@ -30,8 +30,8 @@ Example RPM Electron project with OmniPackage
 
 
 %files
-/usr/bin/omnipackage_example_electron
-/usr/lib/omnipackage_example_electron/
+%attr(755, root, root) /usr/bin/omnipackage_example_electron
+%attr(644, root, root) /usr/lib/omnipackage_example_electron/
 
 %changelog
 * Sun Feb 18 2024 Chuck Norris <chuck@norr.is>

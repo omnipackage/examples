@@ -32,7 +32,7 @@ install -m755 target/release/rust %{buildroot}/usr/bin/omnipackage_example_rust
 
 
 %files
-/usr/bin/omnipackage_example_rust
+%attr(755, root, root) /usr/bin/omnipackage_example_rust
 
 
 %changelog
