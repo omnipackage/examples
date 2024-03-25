@@ -1,0 +1,39 @@
+Name:       omnipackage_example_c_with_secrets
+Version:    {{ version }}
+Release:    1%{?dist}
+Summary:    Example RPM C project with OmniPackage
+License:    GPL-3.0-or-later
+URL:        https://omnipackage.org/
+Source0:    {{ source_folder_name }}.tar.gz
+
+BuildRequires: {{ build_dependencies | join: ' ' }}
+{% if runtime_dependencies.size > 0 %}
+Requires: {{ runtime_dependencies | join: ', ' }}
+{% endif %}
+
+%define debug_package %{nil}
+%define _build_id_links none
+
+%description
+Example RPM C project with OmniPackage
+
+
+%prep
+%setup -q
+
+
+%build
+make %{?_smp_mflags}
+
+
+%install
+make install INSTALL_ROOT=%{buildroot}
+
+
+%files
+%attr(755, root, root) /usr/bin/omnipackage_example_c_with_secrets
+
+
+%changelog
+* Sun Feb 18 2024 Chuck Norris <chuck@norr.is>
+- Chuck Norris does not use revision control software. None of his code has ever needed revision.
