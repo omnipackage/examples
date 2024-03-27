@@ -1,6 +1,6 @@
 [Desktop Entry]
 Categories=
-Comment=A Tauri App
+Comment=Example Rust Tauri project with OmniPackage
 Exec=omnipackage-example-tauri
 Icon=omnipackage-example-tauri
 Name=omnipackage-example-tauri
