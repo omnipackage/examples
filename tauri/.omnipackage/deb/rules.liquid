@@ -1,0 +1,22 @@
+#!/usr/bin/make -f
+# debian.rules
+# Be carefull, this is a Makefile, so the indents are tabs and not spaces!
+# -*- makefile -*-
+
+export DESTROOT=$(CURDIR)/debian/omnipackage-example-tauri
+# export DH_VERBOSE=1
+
+%:
+	dh $@ --parallel
+
+override_dh_auto_build:
+	cargo install tauri-cli
+	cargo tauri build --bundles none
+
+override_dh_auto_install:
+	install -d -m755 $(DESTROOT)/usr/bin/
+	install -m755 src-tauri/target/release/omnipackage-example-tauri $(DESTROOT)/usr/bin/omnipackage-example-tauri
+	mkdir -p $(DESTROOT)/usr/share/applications/
+	cp omnipackage-example-tauri.desktop $(DESTROOT)/usr/share/applications/
+	mkdir -p $(DESTROOT)/usr/share/
+	cp -R icons $(DESTROOT)/usr/share/

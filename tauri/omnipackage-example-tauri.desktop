@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=
+Comment=A Tauri App
+Exec=omnipackage-example-tauri
+Icon=omnipackage-example-tauri
+Name=omnipackage-example-tauri
+Terminal=false
+Type=Application
