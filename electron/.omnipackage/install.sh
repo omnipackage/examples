@@ -12,5 +12,6 @@ wget --no-verbose -O electron.zip $ELECTRON_URL
 unzip electron.zip -d $BUILDROOT$LIBDIR/
 rm electron.zip
 install -d -m755 $BUILDROOT/usr/bin/
-cp -R $(ls -I ".omnipackage" -I ".gitignore" -I ".node-version" -I "node_modules" -I "debian") $BUILDROOT$APPDIR
+cp -R $(ls -I ".omnipackage" -I ".gitignore" -I ".node-version" -I "node_modules" -I "debian" -I "share") $BUILDROOT$APPDIR
+cp -R share/ $BUILDROOT/usr/
 ln -sf $LIBDIR/electron $BUILDROOT/usr/bin/omnipackage_example_electron

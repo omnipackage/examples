@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=
+Comment=Example Electron project with OmniPackage
+Exec=omnipackage_example_electron
+Icon=omnipackage_example_electron
+Name=omnipackage_example_electron
+Terminal=false
+Type=Application
