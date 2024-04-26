@@ -88,6 +88,11 @@ builds:
   before_build_script: '.omnipackage/install_rust.sh'
   <<: *deb
 
+- distro: 'ubuntu_24.04'
+  build_dependencies: ['libwebkit2gtk-4.0-dev', 'build-essential', 'curl', 'wget', 'file', 'libssl-dev', 'libgtk-3-dev', 'libayatana-appindicator3-dev', 'librsvg2-dev']
+  before_build_script: '.omnipackage/install_rust.sh'
+  <<: *deb
+
 - distro: 'almalinux_8'
   build_dependencies: ['gcc', 'make', 'webkit2gtk3-devel', 'openssl-devel', 'curl', 'wget', 'file', 'librsvg2-devel']
   before_build_script: '.omnipackage/install_rust.sh'
