@@ -102,9 +102,16 @@ builds:
 
 - distro: 'mageia_8'
   <<: *rpm
+  build_dependencies: ['gcc', 'make', 'lib64openssl-devel', 'lib64zlib-devel', 'lib64ffi-devel', 'lib64gmp-devel', 'lib64yaml-devel']
+  runtime_dependencies: []
+  before_build_script: '.omnipackage/install_ruby.sh'
 
 - distro: 'mageia_9'
   <<: *rpm
+  build_dependencies: ['ruby-bundler', 'ruby-devel']
+  runtime_dependencies: ['ruby', 'ruby-bundler']
 
 - distro: 'mageia_cauldron'
   <<: *rpm
+  build_dependencies: ['ruby-bundler', 'ruby-devel']
+  runtime_dependencies: ['ruby', 'ruby-bundler']
