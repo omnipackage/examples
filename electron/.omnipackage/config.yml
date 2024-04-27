@@ -79,3 +79,12 @@ builds:
 
 - distro: 'rockylinux_9'
   <<: *rpm
+
+- distro: 'mageia_8'
+  <<: *rpm
+
+- distro: 'mageia_9'
+  <<: *rpm
+
+- distro: 'mageia_cauldron'
+  <<: *rpm
