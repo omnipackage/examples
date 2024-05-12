@@ -27,6 +27,9 @@ builds:
   build_dependencies: ['rust', 'cargo', 'make']
   <<: *rpm
 
+- distro: 'opensuse_15.6'
+  <<: *rpm
+
 - distro: 'opensuse_tumbleweed'
   build_dependencies: ['rust', 'cargo', 'make']
   <<: *rpm

@@ -37,6 +37,9 @@ builds:
   runtime_dependencies: []
   before_build_script: '.omnipackage/install_ruby.sh'
 
+- distro: 'opensuse_15.6'
+  <<: *rpm
+
 - distro: 'opensuse_tumbleweed'
   <<: *rpm
 
