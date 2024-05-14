@@ -29,6 +29,7 @@ builds:
   <<: *rpm
 
 - distro: 'opensuse_15.6'
+  build_dependencies: ['rust', 'cargo', 'make', 'webkit2gtk3-soup2-devel', 'libopenssl-devel', 'curl', 'wget', 'file', 'libappindicator3-1', 'librsvg-devel']
   <<: *rpm
 
 - distro: 'opensuse_tumbleweed'

@@ -28,6 +28,7 @@ builds:
   <<: *rpm
 
 - distro: 'opensuse_15.6'
+  build_dependencies: ['rust', 'cargo', 'make']
   <<: *rpm
 
 - distro: 'opensuse_tumbleweed'
