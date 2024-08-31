@@ -43,6 +43,10 @@ builds:
   build_dependencies: ['rust', 'cargo', 'make']
   <<: *rpm
 
+- distro: 'fedora_40'
+  build_dependencies: ['rust', 'cargo', 'make']
+  <<: *rpm
+
 - distro: 'fedora_rawhide'
   build_dependencies: ['rust', 'cargo', 'make']
   <<: *rpm

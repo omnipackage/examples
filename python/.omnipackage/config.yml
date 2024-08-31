@@ -30,7 +30,7 @@ builds:
 
 - distro: 'opensuse_15.6'
   <<: *rpm
-  
+
 - distro: 'opensuse_tumbleweed'
   <<: *rpm
 
@@ -38,6 +38,9 @@ builds:
   <<: *rpm
 
 - distro: 'fedora_39'
+  <<: *rpm
+
+- distro: 'fedora_40'
   <<: *rpm
 
 - distro: 'fedora_rawhide'
