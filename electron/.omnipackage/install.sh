@@ -14,5 +14,7 @@ rm electron.zip
 install -d -m755 $BUILDROOT/usr/bin/
 cp -R $(ls -I ".omnipackage" -I ".gitignore" -I ".node-version" -I "node_modules" -I "debian" -I "share") $BUILDROOT$APPDIR
 cp -R share/ $BUILDROOT/usr/
-chmod -R 4755 $BUILDROOT/
 ln -sf $LIBDIR/electron $BUILDROOT/usr/bin/omnipackage_example_electron
+
+chown -R root:root $BUILDROOT$LIBDIR
+chmod -R 755 $BUILDROOT$LIBDIR
