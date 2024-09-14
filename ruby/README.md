@@ -1,3 +1,5 @@
+[![OmniPackage repositories badge](https://repositories.omnipackage.org/oleg/examples-ruby/examples-ruby.svg)](https://web.omnipackage.org/oleg/examples-ruby/install)
+
 # OmnipackageExampleRuby
 
 TODO: Delete this and the text below, and describe your gem

@@ -1,3 +1,5 @@
+[![OmniPackage repositories badge](https://repositories.omnipackage.org/oleg/examples-crystal/examples-crystal.svg)](https://web.omnipackage.org/oleg/examples-crystal/install)
+
 # crystal
 
 TODO: Write a description here
