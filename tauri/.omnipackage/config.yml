@@ -69,15 +69,15 @@ builds:
   before_build_script: '.omnipackage/install_rust.sh'
   <<: *deb
 
-- distro: 'debian_testing'
-  build_dependencies: ['libwebkit2gtk-4.0-dev', 'build-essential', 'curl', 'wget', 'file', 'libssl-dev', 'libgtk-3-dev', 'libayatana-appindicator3-dev', 'librsvg2-dev']
-  before_build_script: '.omnipackage/install_rust.sh'
-  <<: *deb
+#- distro: 'debian_testing'
+#  build_dependencies: ['libwebkit2gtk-4.0-dev', 'build-essential', 'curl', 'wget', 'file', 'libssl-dev', 'libgtk-3-dev', 'libayatana-appindicator3-dev', 'librsvg2-dev']
+#  before_build_script: '.omnipackage/install_rust.sh'
+#  <<: *deb
 
-- distro: 'debian_unstable'
-  build_dependencies: ['libwebkit2gtk-4.0-dev', 'build-essential', 'curl', 'wget', 'file', 'libssl-dev', 'libgtk-3-dev', 'libayatana-appindicator3-dev', 'librsvg2-dev']
-  before_build_script: '.omnipackage/install_rust.sh'
-  <<: *deb
+#- distro: 'debian_unstable'
+#  build_dependencies: ['libwebkit2gtk-4.0-dev', 'build-essential', 'curl', 'wget', 'file', 'libssl-dev', 'libgtk-3-dev', 'libayatana-appindicator3-dev', 'librsvg2-dev']
+#  before_build_script: '.omnipackage/install_rust.sh'
+#  <<: *deb
 
 - distro: 'ubuntu_20.04'
   build_dependencies: ['libwebkit2gtk-4.0-dev', 'build-essential', 'curl', 'wget', 'file', 'libssl-dev', 'libgtk-3-dev', 'libayatana-appindicator3-dev', 'librsvg2-dev']
@@ -99,10 +99,10 @@ builds:
   before_build_script: '.omnipackage/install_rust.sh'
   <<: *deb
 
-- distro: 'ubuntu_24.04'
-  build_dependencies: ['libwebkit2gtk-4.1-dev', 'build-essential', 'curl', 'wget', 'file', 'libssl-dev', 'libgtk-3-dev', 'libayatana-appindicator3-dev', 'librsvg2-dev', 'libsoup2.4-dev', 'libjavascriptcoregtk-4.1-dev', 'libjavascriptcoregtk-4.0-bin', 'libwebkit2gtk-4.0-doc', 'libjavascriptcoregtk-4.1-0']
-  before_build_script: '.omnipackage/install_rust.sh'
-  <<: *deb
+#- distro: 'ubuntu_24.04' # https://github.com/tauri-apps/tauri/issues/9662
+#  build_dependencies: ['libwebkit2gtk-4.1-dev', 'build-essential', 'curl', 'wget', 'file', 'libssl-dev', 'libgtk-3-dev', 'libayatana-appindicator3-dev', 'librsvg2-dev', 'libsoup2.4-dev', 'libjavascriptcoregtk-4.1-dev', 'libjavascriptcoregtk-4.0-bin', 'libwebkit2gtk-4.0-doc', 'libjavascriptcoregtk-4.1-0']
+#  before_build_script: '.omnipackage/install_rust.sh'
+#  <<: *deb
 
 - distro: 'almalinux_8'
   build_dependencies: ['gcc', 'make', 'webkit2gtk3-devel', 'openssl-devel', 'curl', 'wget', 'file', 'librsvg2-devel']
@@ -134,7 +134,7 @@ builds:
   before_build_script: '.omnipackage/install_rust.sh'
   <<: *rpm
 
-- distro: 'mageia_cauldron'
-  build_dependencies: ['gcc', 'make', 'lib64webkit2gtk4.0-devel', 'openssl-devel', 'curl', 'wget', 'file', 'lib64rsvg2-devel']
-  before_build_script: '.omnipackage/install_rust.sh'
-  <<: *rpm
+#- distro: 'mageia_cauldron'
+#  build_dependencies: ['gcc', 'make', 'lib64webkit2gtk4.0-devel', 'openssl-devel', 'curl', 'wget', 'file', 'lib64rsvg2-devel']
+#  before_build_script: '.omnipackage/install_rust.sh'
+#  <<: *rpm
