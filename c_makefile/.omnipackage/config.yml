@@ -41,6 +41,9 @@ builds:
 - distro: 'fedora_40'
   <<: *rpm
 
+- distro: 'fedora_41'
+  <<: *rpm
+
 - distro: 'fedora_rawhide'
   <<: *rpm
 
@@ -63,12 +66,6 @@ builds:
   <<: *deb
 
 - distro: 'ubuntu_22.04'
-  <<: *deb
-
-- distro: 'ubuntu_23.10'
-  <<: *deb
-
-- distro: 'ubuntu_23.04'
   <<: *deb
 
 - distro: 'ubuntu_24.04'

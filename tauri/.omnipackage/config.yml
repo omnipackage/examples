@@ -50,6 +50,10 @@ builds:
   build_dependencies: ['rust', 'cargo', 'make', 'webkit2gtk4.0-devel', 'openssl-devel', 'curl', 'wget', 'file',  'libappindicator-gtk3-devel', 'librsvg2-devel']
   <<: *rpm
 
+- distro: 'fedora_41'
+  build_dependencies: ['rust', 'cargo', 'make', 'webkit2gtk4.0-devel', 'openssl-devel', 'curl', 'wget', 'file',  'libappindicator-gtk3-devel', 'librsvg2-devel']
+  <<: *rpm
+
 - distro: 'fedora_rawhide'
   build_dependencies: ['rust', 'cargo', 'make', 'webkit2gtk4.0-devel', 'openssl-devel', 'curl', 'wget', 'file',  'libappindicator-gtk3-devel', 'librsvg2-devel']
   <<: *rpm
@@ -85,16 +89,6 @@ builds:
   <<: *deb
 
 - distro: 'ubuntu_22.04'
-  build_dependencies: ['libwebkit2gtk-4.0-dev', 'build-essential', 'curl', 'wget', 'file', 'libssl-dev', 'libgtk-3-dev', 'libayatana-appindicator3-dev', 'librsvg2-dev']
-  before_build_script: '.omnipackage/install_rust.sh'
-  <<: *deb
-
-- distro: 'ubuntu_23.10'
-  build_dependencies: ['libwebkit2gtk-4.0-dev', 'build-essential', 'curl', 'wget', 'file', 'libssl-dev', 'libgtk-3-dev', 'libayatana-appindicator3-dev', 'librsvg2-dev']
-  before_build_script: '.omnipackage/install_rust.sh'
-  <<: *deb
-
-- distro: 'ubuntu_23.04'
   build_dependencies: ['libwebkit2gtk-4.0-dev', 'build-essential', 'curl', 'wget', 'file', 'libssl-dev', 'libgtk-3-dev', 'libayatana-appindicator3-dev', 'librsvg2-dev']
   before_build_script: '.omnipackage/install_rust.sh'
   <<: *deb

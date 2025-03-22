@@ -47,6 +47,10 @@ builds:
   build_dependencies: ['rust', 'cargo', 'make']
   <<: *rpm
 
+- distro: 'fedora_41'
+  build_dependencies: ['rust', 'cargo', 'make']
+  <<: *rpm
+
 - distro: 'fedora_rawhide'
   build_dependencies: ['rust', 'cargo', 'make']
   <<: *rpm
@@ -82,16 +86,6 @@ builds:
   <<: *deb
 
 - distro: 'ubuntu_22.04'
-  build_dependencies: ['curl', 'build-essential']
-  before_build_script: '.omnipackage/install_rust.sh'
-  <<: *deb
-
-- distro: 'ubuntu_23.10'
-  build_dependencies: ['curl', 'build-essential']
-  before_build_script: '.omnipackage/install_rust.sh'
-  <<: *deb
-
-- distro: 'ubuntu_23.04'
   build_dependencies: ['curl', 'build-essential']
   before_build_script: '.omnipackage/install_rust.sh'
   <<: *deb
