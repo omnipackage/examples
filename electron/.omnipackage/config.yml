@@ -61,6 +61,7 @@ builds:
 
 - distro: 'debian_unstable'
   <<: *deb
+  build_dependencies: ['wget', 'unzip', 'xdg-utils', 'libxtst6', 'libnss3', 'libnotify4', 'libgtk2.0-0', 'libatk-bridge2.0-0', 'libgtk-3-0', 'libxkbcommon-x11-0', 'libasound2t64', 'libatspi2.0-0', 'libgbm1']
 
 - distro: 'ubuntu_20.04'
   <<: *deb
