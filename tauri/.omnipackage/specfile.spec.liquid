@@ -23,8 +23,8 @@ Example RPM Rust Tauri project with OmniPackage
 
 
 %build
-cargo install tauri-cli
-cargo tauri build --bundles none
+cargo install tauri-cli --version '^2.0.0'
+cargo tauri build --no-bundle
 
 
 %install

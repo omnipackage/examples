@@ -10,8 +10,8 @@ export DESTROOT=$(CURDIR)/debian/omnipackage-example-tauri
 	dh $@ --parallel
 
 override_dh_auto_build:
-	cargo install tauri-cli
-	cargo tauri build --bundles none
+	cargo install tauri-cli --version '^2.0.0'
+	cargo tauri build --no-bundle
 
 override_dh_auto_install:
 	install -d -m755 $(DESTROOT)/usr/bin/
