@@ -98,25 +98,25 @@ builds:
   before_build_script: '.omnipackage/install_rust.sh'
   <<: *deb
 
-- distro: 'almalinux_8'
-  build_dependencies: ['gcc', 'make', 'webkit2gtk3-devel', 'openssl-devel', 'curl', 'wget', 'file', 'librsvg2-devel', 'glib2-devel']
-  before_build_script: '.omnipackage/install_rust.sh'
-  <<: *rpm
+#- distro: 'almalinux_8'
+#  build_dependencies: ['gcc', 'make', 'webkit2gtk3-devel', 'openssl-devel', 'curl', 'wget', 'file', 'librsvg2-devel', 'glib2-devel']
+#  before_build_script: '.omnipackage/install_rust.sh'
+#  <<: *rpm
 
-- distro: 'almalinux_9'
-  build_dependencies: ['gcc', 'make', 'webkit2gtk3-devel', 'openssl-devel', 'curl', 'wget', 'file', 'librsvg2-devel', 'glib2-devel']
-  before_build_script: '.omnipackage/install_rust.sh'
-  <<: *rpm
+#- distro: 'almalinux_9'
+#  build_dependencies: ['gcc', 'make', 'webkit2gtk3-devel', 'openssl-devel', 'curl', 'wget', 'file', 'librsvg2-devel', 'glib2-devel']
+#  before_build_script: '.omnipackage/install_rust.sh'
+#  <<: *rpm
 
-- distro: 'rockylinux_8'
-  build_dependencies: ['gcc', 'make', 'webkit2gtk3-devel', 'openssl-devel', 'curl', 'wget', 'file', 'librsvg2-devel', 'glib2-devel']
-  before_build_script: '.omnipackage/install_rust.sh'
-  <<: *rpm
+#- distro: 'rockylinux_8'
+#  build_dependencies: ['gcc', 'make', 'webkit2gtk3-devel', 'openssl-devel', 'curl', 'wget', 'file', 'librsvg2-devel', 'glib2-devel']
+#  before_build_script: '.omnipackage/install_rust.sh'
+#  <<: *rpm
 
-- distro: 'rockylinux_9'
-  build_dependencies: ['gcc', 'make', 'webkit2gtk3-devel', 'openssl-devel', 'curl', 'wget', 'file', 'librsvg2-devel', 'glib2-devel']
-  before_build_script: '.omnipackage/install_rust.sh'
-  <<: *rpm
+#- distro: 'rockylinux_9'
+#  build_dependencies: ['gcc', 'make', 'webkit2gtk3-devel', 'openssl-devel', 'curl', 'wget', 'file', 'librsvg2-devel', 'glib2-devel']
+#  before_build_script: '.omnipackage/install_rust.sh'
+#  <<: *rpm
 
 #- distro: 'mageia_8'
 #  build_dependencies: ['gcc', 'make', 'lib64webkit2-devel', 'openssl-devel', 'curl', 'wget', 'file', 'lib64rsvg2-devel', 'lib64glib2.0-devel', 'lib64glib2.0-static-devel']
