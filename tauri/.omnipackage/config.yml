@@ -119,7 +119,7 @@ builds:
   <<: *rpm
 
 - distro: 'mageia_8'
-  build_dependencies: ['gcc', 'make', 'lib64webkit2-devel', 'openssl-devel', 'curl', 'wget', 'file', 'lib64rsvg2-devel', 'lib64glib2.0-devel']
+  build_dependencies: ['gcc', 'make', 'lib64webkit2-devel', 'openssl-devel', 'curl', 'wget', 'file', 'lib64rsvg2-devel', 'lib64glib2.0-devel', 'lib64glib2.0-static-devel']
   before_build_script: '.omnipackage/install_rust.sh'
   <<: *rpm
 
