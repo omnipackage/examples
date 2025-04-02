@@ -4,15 +4,21 @@ extract_version:
     file: 'shard.yml'
     regex: 'version: (.+)'
 
+common: &common
+  package_name: omnipackage-example-crystal
+  maintainer: 'Chuck Norris <chuck@norr.is>'
+  homepage: https://omnipackage.org/
+  description: Example RPM Electron project with OmniPackage
+
 rpm: &rpm
-  installable_package_name: 'omnipackage_example_crystal'
+  <<: *common
   rpm:
     spec_template: '.omnipackage/specfile.spec.liquid'
   build_dependencies: ['curl', 'pcre-devel', 'libevent-devel', 'gcc']
   before_build_script: '.omnipackage/install_crystal.sh'
 
 deb: &deb
-  installable_package_name: 'omnipackage-example-crystal'
+  <<: *common
   deb:
     debian_templates: '.omnipackage/deb'
   build_dependencies: ['curl', 'libpcre2-dev', 'libevent-dev']

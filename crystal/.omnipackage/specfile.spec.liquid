@@ -1,10 +1,11 @@
-Name:       omnipackage_example_crystal
+Name:       {{ package_name }}
 Version:    {{ version }}
 Release:    1%{?dist}
-Summary:    Example RPM Crystal project with OmniPackage
+Summary:    {{ description }}
 License:    MIT
-URL:        https://omnipackage.org
+URL:        {{ homepage }}
 Source0:    {{ source_folder_name }}.tar.gz
+Vendor:     OmniPackage
 
 BuildRequires: {{ build_dependencies | join: ' ' }}
 {% if runtime_dependencies.size > 0 %}
@@ -15,7 +16,7 @@ Requires: {{ runtime_dependencies | join: ', ' }}
 %define _build_id_links none
 
 %description
-Example RPM Crystal project with OmniPackage
+{{ description }}
 
 
 %prep
@@ -37,5 +38,5 @@ install -m755 bin/omnipackage_example_crystal %{buildroot}/usr/bin/
 
 
 %changelog
-* Sun Feb 18 2024 Chuck Norris <chuck@norr.is>
+* Sun Feb 18 2024 {{ maintainer }}
 - Chuck Norris does not use revision control software. None of his code has ever needed revision.

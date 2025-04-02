@@ -5,6 +5,7 @@ Summary:    {{ description }}
 License:    GPL-3.0-or-later
 URL:        {{ homepage }}
 Source0:    {{ source_folder_name }}.tar.gz
+Vendor:     OmniPackage
 
 BuildRequires: {{ build_dependencies | join: ' ' }}
 {% if runtime_dependencies.size > 0 %}
