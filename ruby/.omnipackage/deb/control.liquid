@@ -1,12 +1,11 @@
-Source: omnipackage-example-ruby
-Section: sound
+Source: {{ package_name }}
 Priority: optional
 Maintainer: Chuck Norris <chuck@norr.is>
 Build-Depends: debhelper (>= 8.0.0), {{ build_dependencies | join: ', ' }}
 Standards-Version: 3.9.4
-Homepage: https://omnipackage.org
+Homepage: {{ homepage }}
 
-Package: omnipackage-example-ruby
+Package: {{ package_name }}
 Architecture: amd64
 Depends: ${shlibs:Depends}, ${misc:Depends}, {{ runtime_dependencies | join: ', ' }}
-Description: Example RPM Ruby project with OmniPackage
+Description: {{ description }}

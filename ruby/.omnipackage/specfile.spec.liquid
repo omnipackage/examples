@@ -1,9 +1,9 @@
-Name:       omnipackage_example_ruby
+Name:       {{ package_name }}
 Version:    {{ version }}
 Release:    1%{?dist}
-Summary:    Example RPM Ruby project with OmniPackage
+Summary:    {{ description }}
 License:    GPL-3.0-or-later
-URL:        https://omnipackage.org/
+URL:        {{ homepage }}
 Source0:    {{ source_folder_name }}.tar.gz
 
 BuildRequires: {{ build_dependencies | join: ' ' }}
@@ -15,7 +15,7 @@ Requires: {{ runtime_dependencies | join: ', ' }}
 %define _build_id_links none
 
 %description
-Example RPM Ruby project with OmniPackage
+{{ description }}
 
 
 %prep
@@ -35,5 +35,5 @@ chmod +x .omnipackage/install.sh
 %attr(755, root, root) /usr/lib/omnipackage_example_ruby/
 
 %changelog
-* Sun Feb 18 2024 Chuck Norris <chuck@norr.is>
+* Sun Feb 18 2024 {{ maintainer }}
 - Chuck Norris does not use revision control software. None of his code has ever needed revision.

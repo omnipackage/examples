@@ -8,7 +8,7 @@ common: &common
   package_name: omnipackage-example-electron
   maintainer: 'Chuck Norris <chuck@norr.is>'
   homepage: https://omnipackage.org/
-  description: Example RPM Crystal project with OmniPackage
+  description: Example Electron project built with OmniPackage
 
 rpm: &rpm
   <<: *common

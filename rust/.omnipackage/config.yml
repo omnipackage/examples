@@ -4,13 +4,19 @@ extract_version:
     file: 'Cargo.toml'
     regex: 'version = "(.+)"'
 
+common: &common
+  package_name: omnipackage-example-rust
+  maintainer: 'Chuck Norris <chuck@norr.is>'
+  homepage: https://omnipackage.org/
+  description: Example Rust project built with OmniPackage
+
 rpm: &rpm
-  installable_package_name: 'omnipackage_example_rust'
+  <<: *common
   rpm:
     spec_template: '.omnipackage/specfile.spec.liquid'
 
 deb: &deb
-  installable_package_name: 'omnipackage-example-rust'
+  <<: *common
   deb:
     debian_templates: '.omnipackage/deb'
 
