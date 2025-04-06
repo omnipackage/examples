@@ -1,0 +1,99 @@
+extract_version:
+  provider: 'file'
+  file:
+    file: 'version.h'
+    regex: 'VERSION "(.+)"'
+
+common: &common
+  package_name: 'omnipackage-example-c-2'
+  maintainer: 'Chuck Norris <chuck@norr.is>'
+  homepage: https://omnipackage.org/
+  description: Example C project built with OmniPackage different config path
+
+rpm: &rpm
+  <<: *common
+  build_dependencies: ['gcc', 'make']
+  rpm:
+    spec_template: '.omnipackage/specfile.spec.liquid'
+
+deb: &deb
+  <<: *common
+  build_dependencies: ['build-essential']
+  deb:
+    debian_templates: '.omnipackage/deb'
+
+builds:
+- distro: 'opensuse_15.3'
+  <<: *rpm
+
+- distro: 'opensuse_15.4'
+  <<: *rpm
+
+- distro: 'opensuse_15.5'
+  <<: *rpm
+
+- distro: 'opensuse_15.6'
+  <<: *rpm
+
+- distro: 'opensuse_tumbleweed'
+  <<: *rpm
+
+- distro: 'fedora_38'
+  <<: *rpm
+
+- distro: 'fedora_39'
+  <<: *rpm
+
+- distro: 'fedora_40'
+  <<: *rpm
+
+- distro: 'fedora_41'
+  <<: *rpm
+
+- distro: 'fedora_rawhide'
+  <<: *rpm
+
+- distro: 'debian_10'
+  <<: *deb
+
+- distro: 'debian_11'
+  <<: *deb
+
+- distro: 'debian_12'
+  <<: *deb
+
+- distro: 'debian_testing'
+  <<: *deb
+
+- distro: 'debian_unstable'
+  <<: *deb
+
+- distro: 'ubuntu_20.04'
+  <<: *deb
+
+- distro: 'ubuntu_22.04'
+  <<: *deb
+
+- distro: 'ubuntu_24.04'
+  <<: *deb
+
+- distro: 'almalinux_8'
+  <<: *rpm
+
+- distro: 'almalinux_9'
+  <<: *rpm
+
+- distro: 'rockylinux_8'
+  <<: *rpm
+
+- distro: 'rockylinux_9'
+  <<: *rpm
+
+- distro: 'mageia_8'
+  <<: *rpm
+
+- distro: 'mageia_9'
+  <<: *rpm
+
+- distro: 'mageia_cauldron'
+  <<: *rpm
