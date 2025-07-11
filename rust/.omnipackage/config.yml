@@ -121,11 +121,6 @@ builds:
   before_build_script: '.omnipackage/install_rust.sh'
   <<: *rpm
 
-- distro: 'mageia_8'
-  build_dependencies: ['curl', 'gcc', 'make']
-  before_build_script: '.omnipackage/install_rust.sh'
-  <<: *rpm
-
 - distro: 'mageia_9'
   build_dependencies: ['curl', 'gcc', 'make']
   before_build_script: '.omnipackage/install_rust.sh'
