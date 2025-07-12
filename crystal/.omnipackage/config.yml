@@ -39,6 +39,7 @@ builds:
 
 - distro: 'opensuse_tumbleweed'
   <<: *rpm
+  build_dependencies: ['curl', 'pcre2-devel', 'libevent-devel', 'gcc']
 
 - distro: 'fedora_38'
   <<: *rpm
