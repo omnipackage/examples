@@ -4,7 +4,7 @@ A collection of "hello world" projects in different languages to demonstrate how
 
 ## Build locally
 
-You need to have [omnipackage-agent](https://docs.omnipackage.org/getting_started/) installed.
+You need to have [omnipackage-agent](https://docs.omnipackage.org/getting_started/#installing-omnipackage-agent) installed.
 
 Run `omnipackage build $PATH_TO_PROJECT`, for example `omnipackage build c_makefile` from the root of this repo.
 
