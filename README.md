@@ -14,4 +14,4 @@ When finished you'll see a list of packages which can be installed on target dis
 
 You can build only for specific distro, change build directory and other config options via command line or config file. Refer to `omnipackage build --help`.
 
-## Build and publish to repositories via OmniPacakge web
+## More at [docs.omnipackage.org](https://docs.omnipackage.org/)
