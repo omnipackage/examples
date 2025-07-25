@@ -14,4 +14,10 @@ When finished you'll see a list of packages which can be installed on target dis
 
 You can build only for specific distro, change build directory and other config options via command line or config file. Refer to `omnipackage build --help`.
 
+## Real-world applications
+
+Beyond these simple examples check out more comples applications that use OmniPackage:
+
+- Qt/C++https://web.omnipackage.org/oleg/mpz
+
 ## More at [docs.omnipackage.org](https://docs.omnipackage.org/)
