@@ -16,7 +16,7 @@ You can build only for specific distro, change build directory and other config 
 
 ## Real-world applications
 
-Beyond these simple examples check out more comples applications that use OmniPackage:
+Beyond these simple examples check out more complex applications that use OmniPackage:
 - OmniPackage [agent](https://web.omnipackage.org/oleg/omnipackage-agent)
 - Qt/C++ desktop music player [mpz](https://web.omnipackage.org/oleg/mpz)
 
