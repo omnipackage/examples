@@ -4,8 +4,14 @@
 
 The most basic program in C without dependencies besides libc.
 
+## Build
+
+```
+omnipackage build .
+```
+
 ## Multiple configs
 
-It also demostrates how to build multiple variants of the same projects in one repository. The default config `.omnipackage/config.yml` provides the default build variant, and `.omnipackage/config2.yml` provides the same projects with different package name. In real world you might want to have "stable" and "dev" variants, where not only `package_name` is different but also compliation flags etc.
+This project also demonstrates how to build multiple variants of the same projects in one repository. The default config `.omnipackage/config.yml` provides the default build variant, and `.omnipackage/config2.yml` provides the same projects with different package name. In real world you might want to have "stable" and "dev" variants, where not only `package_name` is different but also compilation flags etc.
 
 When creating a project on OmniPackage web you can specify the path to config, i.e. `.omnipackage/config2.yml`. This way you'll have different projects on OmniPackage web with different configs, but the same upstream repository.

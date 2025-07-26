@@ -1,9 +1,10 @@
 [![OmniPackage repositories badge](https://repositories.omnipackage.org/oleg/examples-tauri/examples-tauri.svg)](https://web.omnipackage.org/oleg/examples-tauri/install)
 
-# Tauri + Vanilla
+# Tauri
 
-This template should help get you started developing with Tauri in vanilla HTML, CSS and Javascript.
+Example of project written in Rust with Tauri framework. Some distros don't have Rust in their main repositories, for those Rust needs to be installed via `before_build_script`.
 
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+# Build
+```
+omnipackage build .
+```

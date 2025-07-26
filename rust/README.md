@@ -1,7 +1,10 @@
 [![OmniPackage repositories badge](https://repositories.omnipackage.org/oleg/examples-rust/examples-rust.svg)](https://web.omnipackage.org/oleg/examples-rust/install)
 
-# WIP
+# Rust
 
-Rust program with custom script to install Rust on all supported distros.
+Example of project written in Rust. Some distros don't have Rust in their main repositories, for those Rust needs to be installed via `before_build_script`.
 
-Not all distros provide Rust of sufficently recent version in their standad repositories
+# Build
+```
+omnipackage build .
+```
