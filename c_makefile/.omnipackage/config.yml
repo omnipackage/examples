@@ -50,6 +50,9 @@ builds:
 - distro: 'fedora_41'
   <<: *rpm
 
+- distro: 'fedora_42'
+  <<: *rpm
+
 - distro: 'fedora_rawhide'
   <<: *rpm
 
@@ -77,10 +80,16 @@ builds:
 - distro: 'ubuntu_24.04'
   <<: *deb
 
+- distro: 'ubuntu_25.04'
+  <<: *deb
+
 - distro: 'almalinux_8'
   <<: *rpm
 
 - distro: 'almalinux_9'
+  <<: *rpm
+
+- distro: 'almalinux_10'
   <<: *rpm
 
 - distro: 'rockylinux_8'
