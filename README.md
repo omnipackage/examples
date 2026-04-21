@@ -4,20 +4,14 @@ A collection of "hello world" projects in different languages to demonstrate how
 
 ## Build locally
 
-You need to have [omnipackage-agent](https://docs.omnipackage.org/getting_started/#installing-omnipackage-agent) installed.
+You need to have [OmniPackage CLI](https://repositories.omnipackage.org/omnipackage-rs/stable/install.html) installed.
 
-Run `omnipackage build $PATH_TO_PROJECT`, for example `omnipackage build c_makefile` from the root of this repo.
-
-Or `cd` into particular project folder and run `omnipackage build .` from there.
-
-When finished you'll see a list of packages which can be installed on target distros. Note that these packages are unsigned and you'll get signature verification or similar error when installing. This is because signing is done on OmniPackage web side. Agent is responsible for building, while OmniPackage web does signing and publishing.
-
-You can build only for specific distro, change build directory and other config options via command line or config file. Refer to `omnipackage build --help`.
+Refer to README in each subfolder on how to build it.
 
 ## Real-world applications
 
 Beyond these simple examples check out more complex applications that use OmniPackage:
-- OmniPackage [agent](https://web.omnipackage.org/oleg/omnipackage-agent)
-- Qt/C++ desktop music player [mpz](https://web.omnipackage.org/oleg/mpz)
+- OmniPackage CLI [itself](https://repositories.omnipackage.org/omnipackage-rs/stable/install.html)
+- Qt/C++ desktop music player [mpz](https://repositories.omnipackage.org/mpz/stable/install.html)
 
 ## More at [docs.omnipackage.org](https://docs.omnipackage.org/)
