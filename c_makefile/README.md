@@ -6,7 +6,7 @@ The most basic program in C without dependencies besides libc.
 
 1. Generate GPG key
 ```
-echo "GPG_KEY=$(omnipackage gpg generate --name 'test' --email 'test@test' --format base64)" >> .env
+echo "GPG_KEY=$(omnipackage gpg generate --name 'Your Name' --email 'your@email' --format base64)" >> .env
 
 ```
 
