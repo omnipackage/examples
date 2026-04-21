@@ -4,6 +4,9 @@ extract_version:
     file: 'version.h'
     regex: 'VERSION "(.+)"'
 
+secrets:
+  TOP_SECRET_KEY: "${TOP_SECRET_KEY}"
+
 common: &common
   package_name: 'omnipackage-example-c-with-secrets'
   maintainer: 'Chuck Norris <chuck@norr.is>'
