@@ -1,12 +1,22 @@
-[![OmniPackage repositories badge](https://repositories.omnipackage.org/oleg/examples-c-with-secrets/examples-c-with-secrets.svg)](https://web.omnipackage.org/oleg/examples-c-with-secrets/install)
-
 # C Makefile with secrets
 
 The most basic program in C with secrets feature.
 
 ## Build
 
+1. Generate GPG key
 ```
-omnipackage build -s TOP_SECRET_KEY="12345" .
+echo "GPG_KEY=$(omnipackage gpg generate --name 'Your Name' --email 'your@email' --format base64)" >> .env
 ```
-Secrets passed via `-s` or `--secret` option will be excluded from logs and passed as ENV variables.
+
+2. Set TOP_SECRET_KEY
+```
+echo "TOP_SECRET_KEY='Hi there, this is secret'" >> .env
+```
+
+3. Build & publish to local repository
+```
+omnipackage release .
+```
+
+4. Open `/tmp/omnipackage-repos/install.html` in browser. The repositories in this folder are fully functional on local machine.

@@ -1,8 +1,9 @@
-extract_version:
-  provider: 'file'
-  file:
-    file: 'version.h'
-    regex: 'VERSION "(.+)"'
+version_extractors:
+  - name: version_file
+    provider: 'file'
+    file:
+      file: 'version.h'
+      regex: 'VERSION "(.+)"'
 
 secrets:
   TOP_SECRET_KEY: "${TOP_SECRET_KEY}"
@@ -12,6 +13,28 @@ common: &common
   maintainer: 'Chuck Norris <chuck@norr.is>'
   homepage: https://omnipackage.org/
   description: Example C project built with OmniPackage with secrets
+
+repositories:
+  - name: Local test
+    gpg_private_key_base64: "${GPG_KEY}"
+    provider: localfs
+    <<: *common
+    localfs:
+      path: /tmp/omnipackage-repos
+
+  - name: Example bucket
+    provider: s3
+    gpg_private_key_base64: "${GPG_KEY}"
+    <<: *common
+    s3:
+      bucket: example-bucket
+      path_in_bucket: 'examples/c-with-secrets'
+      bucket_public_url: 'https://example-bucket.your-domain.com' # set if your bucket is connected to domain
+      endpoint: 'https://s3 enpoint url ...'
+      access_key_id: '${ACCESS_KEY_ID}'
+      secret_access_key: '${SECRET_ACCESS_KEY}'
+      region: auto
+      force_path_style: true
 
 rpm: &rpm
   <<: *common
@@ -38,6 +61,9 @@ builds:
 - distro: 'opensuse_15.6'
   <<: *rpm
 
+- distro: 'opensuse_16.0'
+  <<: *rpm
+
 - distro: 'opensuse_tumbleweed'
   <<: *rpm
 
@@ -56,11 +82,14 @@ builds:
 - distro: 'fedora_42'
   <<: *rpm
 
-- distro: 'fedora_rawhide'
+- distro: 'fedora_43'
   <<: *rpm
 
-- distro: 'debian_10'
-  <<: *deb
+- distro: 'fedora_44'
+  <<: *rpm
+
+- distro: 'fedora_rawhide'
+  <<: *rpm
 
 - distro: 'debian_11'
   <<: *deb
@@ -70,7 +99,7 @@ builds:
 
 - distro: 'debian_13'
   <<: *deb
-  
+
 - distro: 'debian_testing'
   <<: *deb
 
@@ -87,6 +116,9 @@ builds:
   <<: *deb
 
 - distro: 'ubuntu_25.04'
+  <<: *deb
+
+- distro: 'ubuntu_26.04'
   <<: *deb
 
 - distro: 'almalinux_8'

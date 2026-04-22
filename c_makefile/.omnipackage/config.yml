@@ -14,7 +14,7 @@ common: &common
 
 repositories:
   - name: Local test
-    gpg_private_key_base64: "${GPG_PRIVATE_KEY_BASE64}"
+    gpg_private_key_base64: "${GPG_KEY}"
     provider: localfs
     <<: *common
     localfs:
@@ -22,7 +22,7 @@ repositories:
 
   - name: Example bucket
     provider: s3
-    gpg_private_key_base64: "${GPG_PRIVATE_KEY_BASE64}"
+    gpg_private_key_base64: "${GPG_KEY}"
     <<: *common
     s3:
       bucket: example-bucket
@@ -57,6 +57,9 @@ builds:
   <<: *rpm
 
 - distro: 'opensuse_15.6'
+  <<: *rpm
+
+- distro: 'opensuse_16.0'
   <<: *rpm
 
 - distro: 'opensuse_tumbleweed'
