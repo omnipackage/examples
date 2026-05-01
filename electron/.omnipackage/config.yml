@@ -1,101 +1,216 @@
-extract_version:
-  provider: 'file'
-  file:
-    file: 'package.json'
-    regex: '"version": "(.+)"'
+version_extractors:
+  - name: package_json_file
+    provider: "file"
+    file:
+      file: "package.json"
+      regex: '"version": "(.+)"'
 
 common: &common
   package_name: omnipackage-example-electron
-  maintainer: 'Chuck Norris <chuck@norr.is>'
+  maintainer: "Chuck Norris <chuck@norr.is>"
   homepage: https://omnipackage.org/
   description: Example Electron project built with OmniPackage
 
+repositories:
+  - name: Local test
+    gpg_private_key_base64: "${GPG_KEY}"
+    provider: localfs
+    <<: *common
+    localfs:
+      path: /tmp/omnipackage-repos
+
+  - name: Example bucket
+    provider: s3
+    gpg_private_key_base64: "${GPG_KEY}"
+    <<: *common
+    s3:
+      bucket: example-bucket
+      path_in_bucket: "examples/electron"
+      bucket_public_url: "https://example-bucket.your-domain.com" # set if your bucket is connected to domain
+      endpoint: "https://s3 enpoint url ..."
+      access_key_id: "${ACCESS_KEY_ID}"
+      secret_access_key: "${SECRET_ACCESS_KEY}"
+      region: auto
+      force_path_style: true
+
 rpm: &rpm
   <<: *common
-  build_dependencies: ['wget', 'unzip']
+  build_dependencies: ["wget", "unzip"]
   rpm:
-    spec_template: '.omnipackage/specfile.spec.liquid'
+    spec_template: ".omnipackage/specfile.spec.liquid"
 
 deb: &deb
   <<: *common
-  build_dependencies: ['wget', 'unzip', 'xdg-utils', 'libxtst6', 'libnss3', 'libnotify4', 'libgtk2.0-0', 'libatk-bridge2.0-0', 'libgtk-3-0', 'libxkbcommon-x11-0', 'libasound2', 'libatspi2.0-0', 'libgbm1']
+  build_dependencies:
+    [
+      "wget",
+      "unzip",
+      "xdg-utils",
+      "libxtst6",
+      "libnss3",
+      "libnotify4",
+      "libgtk2.0-0",
+      "libatk-bridge2.0-0",
+      "libgtk-3-0",
+      "libxkbcommon-x11-0",
+      "libasound2",
+      "libatspi2.0-0",
+      "libgbm1",
+    ]
   deb:
-    debian_templates: '.omnipackage/deb'
+    debian_templates: ".omnipackage/deb"
 
 builds:
-- distro: 'opensuse_15.3'
-  <<: *rpm
+  - distro: "opensuse_15.3"
+    <<: *rpm
 
-- distro: 'opensuse_15.4'
-  <<: *rpm
+  - distro: "opensuse_15.4"
+    <<: *rpm
 
-- distro: 'opensuse_15.5'
-  <<: *rpm
+  - distro: "opensuse_15.5"
+    <<: *rpm
 
-- distro: 'opensuse_15.6'
-  <<: *rpm
+  - distro: "opensuse_15.6"
+    <<: *rpm
 
-- distro: 'opensuse_tumbleweed'
-  <<: *rpm
+  - distro: "opensuse_16.0"
+    <<: *rpm
 
-- distro: 'fedora_38'
-  <<: *rpm
+  - distro: "opensuse_tumbleweed"
+    <<: *rpm
 
-- distro: 'fedora_39'
-  <<: *rpm
+  - distro: "fedora_38"
+    <<: *rpm
 
-- distro: 'fedora_40'
-  <<: *rpm
+  - distro: "fedora_39"
+    <<: *rpm
 
-- distro: 'fedora_41'
-  <<: *rpm
+  - distro: "fedora_40"
+    <<: *rpm
 
-- distro: 'fedora_rawhide'
-  <<: *rpm
+  - distro: "fedora_41"
+    <<: *rpm
 
-- distro: 'debian_10'
-  <<: *deb
+  - distro: "fedora_42"
+    <<: *rpm
 
-- distro: 'debian_11'
-  <<: *deb
+  - distro: "fedora_43"
+    <<: *rpm
 
-- distro: 'debian_12'
-  <<: *deb
+  - distro: "fedora_44"
+    <<: *rpm
 
-- distro: 'debian_13'
-  <<: *deb
-  
-- distro: 'debian_testing'
-  <<: *deb
+  - distro: "fedora_rawhide"
+    <<: *rpm
 
-- distro: 'debian_unstable'
-  <<: *deb
-  build_dependencies: ['wget', 'unzip', 'xdg-utils', 'libxtst6', 'libnss3', 'libnotify4', 'libgtk2.0-0', 'libatk-bridge2.0-0', 'libgtk-3-0', 'libxkbcommon-x11-0', 'libasound2t64', 'libatspi2.0-0', 'libgbm1']
+  - distro: "debian_11"
+    <<: *deb
 
-- distro: 'ubuntu_20.04'
-  <<: *deb
+  - distro: "debian_12"
+    <<: *deb
 
-- distro: 'ubuntu_22.04'
-  <<: *deb
+  - distro: "debian_13"
+    <<: *deb
 
-- distro: 'ubuntu_24.04'
-  <<: *deb
-  build_dependencies: ['wget', 'unzip', 'xdg-utils', 'libxtst6', 'libnss3', 'libnotify4', 'libgtk2.0-0', 'libatk-bridge2.0-0', 'libgtk-3-0', 'libxkbcommon-x11-0', 'libasound2t64', 'libatspi2.0-0', 'libgbm1']
+  - distro: "debian_testing"
+    <<: *deb
 
-- distro: 'almalinux_8'
-  <<: *rpm
+  - distro: "debian_unstable"
+    <<: *deb
+    build_dependencies:
+      [
+        "wget",
+        "unzip",
+        "xdg-utils",
+        "libxtst6",
+        "libnss3",
+        "libnotify4",
+        "libgtk2.0-0",
+        "libatk-bridge2.0-0",
+        "libgtk-3-0",
+        "libxkbcommon-x11-0",
+        "libasound2t64",
+        "libatspi2.0-0",
+        "libgbm1",
+      ]
 
-- distro: 'almalinux_9'
-  <<: *rpm
+  - distro: "ubuntu_20.04"
+    <<: *deb
 
-- distro: 'rockylinux_8'
-  <<: *rpm
+  - distro: "ubuntu_22.04"
+    <<: *deb
 
-- distro: 'rockylinux_9'
-  <<: *rpm
+  - distro: "ubuntu_24.04"
+    <<: *deb
+    build_dependencies:
+      [
+        "wget",
+        "unzip",
+        "xdg-utils",
+        "libxtst6",
+        "libnss3",
+        "libnotify4",
+        "libgtk2.0-0",
+        "libatk-bridge2.0-0",
+        "libgtk-3-0",
+        "libxkbcommon-x11-0",
+        "libasound2t64",
+        "libatspi2.0-0",
+        "libgbm1",
+      ]
 
-- distro: 'mageia_9'
-  <<: *rpm
+  - distro: "ubuntu_25.04"
+    <<: *deb
+    build_dependencies:
+      [
+        "wget",
+        "unzip",
+        "xdg-utils",
+        "libxtst6",
+        "libnss3",
+        "libnotify4",
+        "libgtk2.0-0",
+        "libatk-bridge2.0-0",
+        "libgtk-3-0",
+        "libxkbcommon-x11-0",
+        "libasound2t64",
+        "libatspi2.0-0",
+        "libgbm1",
+      ]
 
-- distro: 'mageia_cauldron'
-  <<: *rpm
+  - distro: "ubuntu_26.04"
+    <<: *deb
+    build_dependencies:
+      [
+        "wget",
+        "unzip",
+        "xdg-utils",
+        "libxtst6",
+        "libnss3",
+        "libnotify4",
+        "libgtk2.0-0",
+        "libatk-bridge2.0-0",
+        "libgtk-3-0",
+        "libxkbcommon-x11-0",
+        "libasound2t64",
+        "libatspi2.0-0",
+        "libgbm1",
+      ]
+
+  - distro: "almalinux_8"
+    <<: *rpm
+
+  - distro: "almalinux_9"
+    <<: *rpm
+
+  - distro: "rockylinux_8"
+    <<: *rpm
+
+  - distro: "rockylinux_9"
+    <<: *rpm
+
+  - distro: "mageia_9"
+    <<: *rpm
+
+  - distro: "mageia_cauldron"
+    <<: *rpm

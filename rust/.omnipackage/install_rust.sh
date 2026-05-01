@@ -6,5 +6,12 @@ if cargo --version; then
     exit 0
 fi
 
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-ln -s $HOME/.cargo/bin/* /usr/bin/
+RUST_VERSION=1.95.0
+ARCH=$(uname -m)
+
+curl -O https://static.rust-lang.org/dist/rust-${RUST_VERSION}-${ARCH}-unknown-linux-gnu.tar.gz
+tar -xzf rust-*.tar.gz
+cd rust-*/
+./install.sh --prefix=/usr
+cd ..
+rm -rf rust-*

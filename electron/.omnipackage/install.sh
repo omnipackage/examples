@@ -3,7 +3,7 @@
 set -xEeuo pipefail
 
 BUILDROOT=$1
-ELECTRON_URL="https://github.com/electron/electron/releases/download/v29.0.1/electron-v29.0.1-linux-x64.zip"
+ELECTRON_URL="https://github.com/electron/electron/releases/download/v41.4.0/electron-v41.4.0-linux-x64.zip"
 LIBDIR="/usr/lib/omnipackage_example_electron"
 APPDIR=$LIBDIR/resources/app/
 

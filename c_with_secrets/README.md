@@ -7,6 +7,7 @@ The most basic program in C with secrets feature.
 1. Generate GPG key
 ```
 echo "GPG_KEY=$(omnipackage gpg generate --name 'Your Name' --email 'your@email' --format base64)" >> .env
+
 ```
 
 2. Set TOP_SECRET_KEY

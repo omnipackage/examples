@@ -1,14 +1,14 @@
 version_extractors:
   - name: version_file
-    provider: 'file'
+    provider: "file"
     file:
-      file: 'version.h'
+      file: "version.h"
       regex: 'VERSION "(.+)"'
 
 common: &common
-  project_name: 'Example C Makefile'
-  package_name: 'omnipackage-example-c-2'
-  maintainer: 'Chuck Norris <chuck@norr.is>'
+  project_name: "Example C Makefile"
+  package_name: "omnipackage-example-c-2"
+  maintainer: "Chuck Norris <chuck@norr.is>"
   homepage: https://omnipackage.org/
   description: Example C project built with OmniPackage
 
@@ -26,116 +26,116 @@ repositories:
     <<: *common
     s3:
       bucket: example-bucket
-      path_in_bucket: 'examples/c_makefile-2'
-      bucket_public_url: 'https://example-bucket.your-domain.com' # set if your bucket is connected to domain
-      endpoint: 'https://s3 enpoint url ...'
-      access_key_id: '${ACCESS_KEY_ID}'
-      secret_access_key: '${SECRET_ACCESS_KEY}'
+      path_in_bucket: "examples/c_makefile-2"
+      bucket_public_url: "https://example-bucket.your-domain.com" # set if your bucket is connected to domain
+      endpoint: "https://s3 enpoint url ..."
+      access_key_id: "${ACCESS_KEY_ID}"
+      secret_access_key: "${SECRET_ACCESS_KEY}"
       region: auto
       force_path_style: true
 
 rpm: &rpm
   <<: *common
-  build_dependencies: ['gcc', 'make']
+  build_dependencies: ["gcc", "make"]
   rpm:
-    spec_template: '.omnipackage/specfile.spec.liquid'
+    spec_template: ".omnipackage/specfile.spec.liquid"
 
 deb: &deb
   <<: *common
-  build_dependencies: ['build-essential']
+  build_dependencies: ["build-essential"]
   deb:
-    debian_templates: '.omnipackage/deb'
+    debian_templates: ".omnipackage/deb"
 
 builds:
-- distro: 'opensuse_15.3'
-  <<: *rpm
+  - distro: "opensuse_15.3"
+    <<: *rpm
 
-- distro: 'opensuse_15.4'
-  <<: *rpm
+  - distro: "opensuse_15.4"
+    <<: *rpm
 
-- distro: 'opensuse_15.5'
-  <<: *rpm
+  - distro: "opensuse_15.5"
+    <<: *rpm
 
-- distro: 'opensuse_15.6'
-  <<: *rpm
+  - distro: "opensuse_15.6"
+    <<: *rpm
 
-- distro: 'opensuse_16.0'
-  <<: *rpm
+  - distro: "opensuse_16.0"
+    <<: *rpm
 
-- distro: 'opensuse_tumbleweed'
-  <<: *rpm
+  - distro: "opensuse_tumbleweed"
+    <<: *rpm
 
-- distro: 'fedora_38'
-  <<: *rpm
+  - distro: "fedora_38"
+    <<: *rpm
 
-- distro: 'fedora_39'
-  <<: *rpm
+  - distro: "fedora_39"
+    <<: *rpm
 
-- distro: 'fedora_40'
-  <<: *rpm
+  - distro: "fedora_40"
+    <<: *rpm
 
-- distro: 'fedora_41'
-  <<: *rpm
+  - distro: "fedora_41"
+    <<: *rpm
 
-- distro: 'fedora_42'
-  <<: *rpm
+  - distro: "fedora_42"
+    <<: *rpm
 
-- distro: 'fedora_43'
-  <<: *rpm
+  - distro: "fedora_43"
+    <<: *rpm
 
-- distro: 'fedora_44'
-  <<: *rpm
+  - distro: "fedora_44"
+    <<: *rpm
 
-- distro: 'fedora_rawhide'
-  <<: *rpm
+  - distro: "fedora_rawhide"
+    <<: *rpm
 
-- distro: 'debian_11'
-  <<: *deb
+  - distro: "debian_11"
+    <<: *deb
 
-- distro: 'debian_12'
-  <<: *deb
+  - distro: "debian_12"
+    <<: *deb
 
-- distro: 'debian_13'
-  <<: *deb
+  - distro: "debian_13"
+    <<: *deb
 
-- distro: 'debian_testing'
-  <<: *deb
+  - distro: "debian_testing"
+    <<: *deb
 
-- distro: 'debian_unstable'
-  <<: *deb
+  - distro: "debian_unstable"
+    <<: *deb
 
-- distro: 'ubuntu_20.04'
-  <<: *deb
+  - distro: "ubuntu_20.04"
+    <<: *deb
 
-- distro: 'ubuntu_22.04'
-  <<: *deb
+  - distro: "ubuntu_22.04"
+    <<: *deb
 
-- distro: 'ubuntu_24.04'
-  <<: *deb
+  - distro: "ubuntu_24.04"
+    <<: *deb
 
-- distro: 'ubuntu_25.04'
-  <<: *deb
+  - distro: "ubuntu_25.04"
+    <<: *deb
 
-- distro: 'ubuntu_26.04'
-  <<: *deb
+  - distro: "ubuntu_26.04"
+    <<: *deb
 
-- distro: 'almalinux_8'
-  <<: *rpm
+  - distro: "almalinux_8"
+    <<: *rpm
 
-- distro: 'almalinux_9'
-  <<: *rpm
+  - distro: "almalinux_9"
+    <<: *rpm
 
-- distro: 'almalinux_10'
-  <<: *rpm
+  - distro: "almalinux_10"
+    <<: *rpm
 
-- distro: 'rockylinux_8'
-  <<: *rpm
+  - distro: "rockylinux_8"
+    <<: *rpm
 
-- distro: 'rockylinux_9'
-  <<: *rpm
+  - distro: "rockylinux_9"
+    <<: *rpm
 
-- distro: 'mageia_9'
-  <<: *rpm
+  - distro: "mageia_9"
+    <<: *rpm
 
-- distro: 'mageia_cauldron'
-  <<: *rpm
+  - distro: "mageia_cauldron"
+    <<: *rpm

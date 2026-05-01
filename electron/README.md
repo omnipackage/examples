@@ -1,10 +1,18 @@
-[![OmniPackage repositories badge](https://repositories.omnipackage.org/oleg/examples-electron/examples-electron.svg)](https://web.omnipackage.org/oleg/examples-electron/install)
-
 # Electron
 
 An example project using Electron framework.
 
-# Build
+## Build
+
+1. Generate GPG key
 ```
-omnipackage build .
+echo "GPG_KEY=$(omnipackage gpg generate --name 'Your Name' --email 'your@email' --format base64)" >> .env
+
 ```
+
+2. Build & publish to local repository
+```
+omnipackage release .
+```
+
+3. Open `/tmp/omnipackage-repos/install.html` in browser. The repositories in this folder are fully functional on local machine.
