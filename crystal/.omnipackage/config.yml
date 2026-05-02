@@ -130,6 +130,7 @@ builds:
 
   - distro: "almalinux_10"
     <<: *rpm
+    build_dependencies: ["curl", "pcre2-devel", "libevent-devel", "gcc"]
 
   - distro: "rockylinux_8"
     <<: *rpm
