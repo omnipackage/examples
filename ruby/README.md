@@ -15,4 +15,4 @@ echo "GPG_KEY=$(omnipackage gpg generate --name 'Your Name' --email 'your@email'
 omnipackage release .
 ```
 
-3. Open `/tmp/omnipackage-repos/install.html` in browser. The repositories in this folder are fully functional on local machine.
+3. Open `~/omnipackage-examples-repos/ruby/install.html` in browser. The repositories in this folder are fully functional on local machine.

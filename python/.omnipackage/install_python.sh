@@ -8,11 +8,13 @@ if $PREFIX/bin/python3 -v; then
     exit 0
 fi
 
-curl -L https://www.python.org/ftp/python/3.12.2/Python-3.12.2.tar.xz | tar -Jx -C .
-cd Python-3.12.2
+PYTHON_VERSION="3.14.4"
+
+curl -L https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tar.xz | tar -Jx -C .
+cd Python-$PYTHON_VERSION
 ./configure --disable-test-modules --prefix=$PREFIX
 make -j$(nproc)
 make install
 cd ..
-rm -rf Python-3.12.2
+rm -rf Python-$PYTHON_VERSION
 ls -latrh $PREFIX

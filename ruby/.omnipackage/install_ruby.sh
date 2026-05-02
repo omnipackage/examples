@@ -8,11 +8,11 @@ if $PREFIX/bin/ruby -v; then
     exit 0
 fi
 
-curl -L https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.0.tar.gz | tar -zx -C .
-cd ruby-3.3.0/
+curl -L https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.3.tar.gz | tar -zx -C .
+cd ruby-*
 ./configure --disable-install-doc --prefix=$PREFIX
 make -j$(nproc)
 make install
 cd ..
-rm -rf ruby-3.3.0/
+rm -rf ruby-*
 ls -latrh $PREFIX
