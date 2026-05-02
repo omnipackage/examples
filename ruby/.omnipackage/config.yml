@@ -110,18 +110,6 @@ builds:
 
   - distro: "opensuse_16.0"
     <<: *rpm
-    build_dependencies:
-      [
-        "gcc",
-        "make",
-        "libopenssl-devel",
-        "libyaml-devel",
-        "zlib-devel",
-        "libffi-devel",
-        "gmp-devel",
-      ]
-    runtime_dependencies: []
-    before_build_script: ".omnipackage/install_ruby.sh"
 
   - distro: "opensuse_tumbleweed"
     <<: *rpm
