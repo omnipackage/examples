@@ -20,7 +20,7 @@ repositories:
     provider: localfs
     <<: *common
     localfs:
-      path: /tmp/omnipackage-repos
+      path: "${HOME}/omnipackage-examples-repos/c_with_secrets"
 
   - name: Example bucket
     provider: s3

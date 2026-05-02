@@ -17,7 +17,7 @@ repositories:
     provider: localfs
     <<: *common
     localfs:
-      path: /tmp/omnipackage-repos
+      path: "${HOME}/omnipackage-examples-repos/electron"
 
   - name: Example bucket
     provider: s3

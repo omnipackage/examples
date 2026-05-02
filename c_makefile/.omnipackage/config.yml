@@ -18,7 +18,7 @@ repositories:
     provider: localfs
     <<: *common
     localfs:
-      path: /tmp/omnipackage-repos
+      path: "${HOME}/omnipackage-examples-repos/c_makefile"
 
   - name: Example bucket
     provider: s3

@@ -17,7 +17,7 @@ repositories:
     provider: localfs
     <<: *common
     localfs:
-      path: /tmp/omnipackage-repos
+      path: "${HOME}/omnipackage-examples-repos/crystal"
 
   - name: Example bucket
     provider: s3
@@ -90,6 +90,7 @@ builds:
 
   - distro: "fedora_rawhide"
     <<: *rpm
+    build_dependencies: ["curl", "pcre2-devel", "libevent-devel", "gcc"]
 
   - distro: "debian_11"
     <<: *deb

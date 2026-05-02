@@ -20,4 +20,4 @@ echo "TOP_SECRET_KEY='Hi there, this is secret'" >> .env
 omnipackage release .
 ```
 
-4. Open `/tmp/omnipackage-repos/install.html` in browser. The repositories in this folder are fully functional on local machine.
+4. Open `~/omnipackage-examples-repos/c_with_secrets/install.html` in browser. The repositories in this folder are fully functional on local machine.
