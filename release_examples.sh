@@ -12,8 +12,9 @@
 
 set -euo pipefail
 
-ALL_EXAMPLES=(c_makefile c_with_secrets crystal electron go python ruby rust tauri)
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+mapfile -t ALL_EXAMPLES < <(find "$SCRIPT_DIR" -mindepth 1 -maxdepth 1 -type d -not -name '.*' -printf '%f\n' | sort)
 
 example=""
 distro=""

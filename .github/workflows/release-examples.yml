@@ -40,7 +40,8 @@ jobs:
           if [[ -n "${{ inputs.example }}" ]]; then
             echo "examples=[\"${{ inputs.example }}\"]" >> "$GITHUB_OUTPUT"
           else
-            echo 'examples=["c_makefile","c_with_secrets","crystal","electron","go","python","ruby","rust","tauri"]' >> "$GITHUB_OUTPUT"
+            list=$(find . -mindepth 1 -maxdepth 1 -type d -not -name '.*' -printf '%f\n' | sort | jq -R . | jq -sc .)
+            echo "examples=$list" >> "$GITHUB_OUTPUT"
           fi
 
       - id: distros
