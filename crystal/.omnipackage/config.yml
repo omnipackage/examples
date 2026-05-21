@@ -151,6 +151,10 @@ builds:
   - distro: "rockylinux_9"
     <<: *rpm
 
+  - distro: "rockylinux_10"
+    <<: *rpm
+    build_dependencies: ["curl", "pcre2-devel", "libevent-devel", "gcc"]
+
   - distro: "mageia_9"
     <<: *rpm
 

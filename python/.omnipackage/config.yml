@@ -175,6 +175,9 @@ builds:
   - distro: "rockylinux_9"
     <<: *rpm
 
+  - distro: "rockylinux_10"
+    <<: *rpm
+
   - distro: "mageia_9"
     <<: *rpm
 
