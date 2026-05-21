@@ -20,11 +20,10 @@ on:
     - cron: '17 0 1 * *'  # 00:17 UTC on the 1st of each month (02:17 UTC+2, night)
 
 jobs:
-  list-matrix:
+  list-distros:
     runs-on: ubuntu-24.04
     outputs:
-      examples: ${{ steps.examples.outputs.examples }}
-      distros:  ${{ steps.distros.outputs.distros }}
+      distros: ${{ steps.distros.outputs.distros }}
     steps:
       - name: Install omnipackage
         run: |
@@ -34,15 +33,6 @@ jobs:
           sudo apt-get install omnipackage
 
       - uses: actions/checkout@v6
-
-      - id: examples
-        run: |
-          if [[ -n "${{ inputs.example }}" ]]; then
-            echo "examples=[\"${{ inputs.example }}\"]" >> "$GITHUB_OUTPUT"
-          else
-            list=$(find . -mindepth 1 -maxdepth 1 -type d -not -name '.*' -printf '%f\n' | sort | jq -R . | jq -sc .)
-            echo "examples=$list" >> "$GITHUB_OUTPUT"
-          fi
 
       - id: distros
         run: |
@@ -53,17 +43,15 @@ jobs:
           fi
 
   release:
-    needs: [list-matrix]
+    needs: [list-distros]
     runs-on: ubuntu-24.04
     concurrency:
-      group: release-examples-${{ matrix.example }}-${{ matrix.distro }}
+      group: release-examples-${{ matrix.distro }}
       cancel-in-progress: false
     strategy:
       fail-fast: false
-      max-parallel: 24
       matrix:
-        example: ${{ fromJson(needs.list-matrix.outputs.examples) }}
-        distro:  ${{ fromJson(needs.list-matrix.outputs.distros) }}
+        distro: ${{ fromJson(needs.list-distros.outputs.distros) }}
     steps:
       - name: Install omnipackage
         run: |
@@ -74,5 +62,10 @@ jobs:
 
       - uses: actions/checkout@v6
 
-      - name: Release ${{ matrix.example }} for ${{ matrix.distro }}
-        run: ./release_examples.sh --example "${{ matrix.example }}" --distro "${{ matrix.distro }}"
+      - name: Release all examples for ${{ matrix.distro }}
+        run: |
+          args=(--distro "${{ matrix.distro }}")
+          if [[ -n "${{ inputs.example }}" ]]; then
+            args+=(--example "${{ inputs.example }}")
+          fi
+          ./release_examples.sh "${args[@]}"
