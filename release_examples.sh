@@ -35,7 +35,7 @@ declare -A results
 for ex in "${examples[@]}"; do
   printf 'GPG_KEY=%s\nTOP_SECRET_KEY=%s\n' "$gpg_key" "$top_secret_key" > "$SCRIPT_DIR/$ex/.env"
 
-  args=(release .)
+  args=(release . --container-output null)
   [[ -n "$distro" ]]    && args+=(--distros "$distro")
   [[ -n "$build_dir" ]] && args+=(--build-dir "$build_dir")
 
