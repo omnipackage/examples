@@ -47,15 +47,29 @@ for ex in "${examples[@]}"; do
   fi
 done
 
+GREEN=""; RED=""; RESET=""
+[[ -t 1 ]] && { GREEN=$'\e[32m'; RED=$'\e[31m'; RESET=$'\e[0m'; }
+
 summary="## Release summary${distro:+ - \`$distro\`}"$'\n\n| Example | Result |\n|---|---|\n'
 failed=0
 for ex in "${examples[@]}"; do
-  summary+="| $ex | ${results[$ex]} |"$'\n'
-  [[ "${results[$ex]}" != "OK" ]] && failed=1
+  if [[ "${results[$ex]}" == "OK" ]]; then
+    summary+="| $ex | ✅ |"$'\n'
+  else
+    summary+="| $ex | ❌ |"$'\n'
+    failed=1
+  fi
 done
 
 echo
-echo "$summary"
-[[ -n "${GITHUB_STEP_SUMMARY:-}" ]] && echo "$summary" >> "$GITHUB_STEP_SUMMARY"
+while IFS= read -r line; do
+  case "$line" in
+    *❌*) printf '%s%s%s\n' "$RED"   "$line" "$RESET" ;;
+    *✅*) printf '%s%s%s\n' "$GREEN" "$line" "$RESET" ;;
+    *)    printf '%s\n' "$line" ;;
+  esac
+done <<< "$summary"
+
+[[ -n "${GITHUB_STEP_SUMMARY:-}" ]] && printf '%s' "$summary" >> "$GITHUB_STEP_SUMMARY"
 
 exit $failed
